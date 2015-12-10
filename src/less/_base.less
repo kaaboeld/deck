@@ -1,0 +1,252 @@
+body{
+    background:#fff;
+    overflow:hidden;
+    font-size:18px;
+    font-weight:300;
+    font-family:@baseFontFamily;
+    user-select:none;
+    cursor:default;
+}
+
+#map,#layout{
+    width:100%;
+    height:100%;
+}
+#layout{
+    padding:0 30px;
+}
+#map{
+    position:absolute;
+    overflow:hidden;
+    background:@bgColor;
+    z-index:0;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    transition:background-color 0.7s;
+    &:hover{
+        background-color:@hoverColor;
+    }
+}
+#deck{
+    height:100%;
+    width:100%;
+    overflow:visible;
+    display:inline-block;
+    
+}
+.card{
+    transition: all 0.7s;
+    position:absolute;
+    top:20px;
+    bottom:20px;
+    
+    overflow:hidden;
+    background:lighten(@bgColor,7);
+    
+    
+    width:@cardNarrowWidth;
+    min-width:@cardNarrowWidth;
+    max-width:@cardNarrowWidth;
+    box-shadow:-3px 0 10px rgba(0,0,0,0.1);
+    display:block;
+    
+    
+    &:first-child{
+        margin-left:0;
+    }
+    &:last-child{
+        cursor:pointer;
+        background:#fff;
+        .badge{
+            opacity:1;
+        }
+    }
+    &-type{
+        &-narrow{
+            max-width:@cardNarrowWidth;
+        }
+        &-wide{
+            &:last-child{
+                min-width:@cardNarrowWidth;
+                max-width:@cardWideWidth;
+            }
+        }
+    }
+    &._remove{
+        background:@iconColor;
+        .badge{
+            &:after{
+                opacity:0;
+            }
+        }
+    }
+    .badge{
+        opacity:0;
+        transition:background 0.4s, height 0.4s, width 0.4s, border 0.4s, opacity 0.4s;
+        @color:@iconColor;
+        
+        @size:100px;
+        width:@size;
+        height:@size;
+        margin:auto;
+        position:absolute;
+        
+        color:@color;
+        
+        text-align:center;
+        left:0;
+        right:0;
+        top:0;
+        bottom:0;
+        line-height:@size - 4;
+        vertical-align:middle;
+        &.num{
+            transition:opacity 0.4s;
+        }
+        .content{
+            border:2px solid @color;
+            font-size:42px;
+            overflow:hidden;
+            width:100%;
+            height:100%;
+            border-radius:100%;
+        }
+        .icon{
+            transition:width 1s;
+            overflow:hidden;
+            position:absolute;
+            display:none;
+            
+            left:0;
+            right:0;
+            top:0;
+            bottom:0;
+            margin:0 auto;
+            color:#fff;
+            width:5px;
+            img{
+                vertical-align:top;
+                width:100%;
+                height:100%;
+                margin-top:1px;
+            }
+        }
+        
+        &:after{
+            transition:opacity 1.2s;
+            opacity:0;
+            text-transform:uppercase;
+            line-height:16px;
+            font-weight:400;
+            font-size:14px;
+            color:@color;
+            position:absolute;
+            content:'';
+            display:block;
+            bottom:0;
+        }
+    }
+    &:hover{
+        .badge{
+            @color:@iconColor;
+            @size:60px;
+            
+            @strWidth:100px;
+            
+            width:@size;
+            height:@size;
+            
+            
+            .content{
+                background:@color;
+            }
+            .num{
+                display:none;
+            }
+            .icon-remove{
+                display:block;
+                width:100%;
+            }
+            &:after{
+                bottom:-28px;
+                opacity:1;
+                width:@strWidth;
+                left:-((@strWidth - @size)/2);
+                content:'remove card';
+            }
+        }
+    }
+}
+._add{
+    &-narrow,&-wide{
+        .card{
+            &:hover{
+                .badge{
+                    @size:100px;
+                    @strWidth:100px;
+                    
+                    
+                    width:@size;
+                    height:@size;
+                    .content{
+                        background:#fff;
+                        border-color:@successColor;
+                    }
+                    .icon-add{
+                        width:100%;
+                        text-align:center;
+                        margin-top:-44px;
+                        img{
+                            margin:0 auto;
+                        }
+                        .i{
+                            &-layout{
+                                width:50px;
+                                margin-top:23px;
+                            }
+                        }
+                    }
+                    &:after{
+                        bottom:-42px;
+                        width:@strWidth;
+                        left:-((@strWidth - @size)/2);
+                    }
+                }
+            }
+        }
+    }
+    &-narrow{
+        .card{
+            &:hover{
+                .badge{
+                    .icon-add{
+                        &-narrow{
+                            display:block;
+                        }
+                    }
+                    &:after{
+                        content:'add narrow card';
+                    }
+                }
+            }
+        }
+    }
+    &-wide{
+        .card{
+            &:hover{
+                .badge{
+                    .icon-add{
+                        &-wide{
+                            display:block;
+                        }
+                    }
+                    &:after{
+                        content:'add wide card';
+                    }
+                }
+            }
+        }
+    }
+}

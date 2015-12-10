@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>DECK</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="white">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <!--  styles-->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/main.min.css">
+    <!-- /styles-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+  </head>
+  <body>
+    <div id="map"></div>
+    <div id="layout">
+      <div id="deck"></div>
+    </div>
+    <!--  script libs-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/lib/jquery.mobile-events.min.js"></script>
+    <script src="/bower_components/handlebars/handlebars.min.js"></script>
+    <script src="/bower_components/history.js/scripts/bundled/html4+html5/jquery.history.js"></script>
+    <!-- /script libs-->
+    <!--  templates-->
+    <script id="card-template" type="text/x-handlebars-template">
+      <div data-type="{{type}}" data-index="{{index}}" class="card card-type-{{type}}">
+        <div class="badge">
+          <div class="content">
+            <div class="num">{{number}}</div>
+            <div class="icon icon-remove"><img src="./i/arrows_remove.svg"></div>
+            <div class="icon icon-add icon-add-wide"><img src="./i/software_layout.svg" class="i-layout"></div>
+            <div class="icon icon-add icon-add-narrow"><img src="./i/software_layout_sidebar_left.svg" class="i-layout"></div>
+          </div>
+        </div>
+      </div>
+    </script>
+    <!-- /templates-->
+    <!--  script data-->
+    <script src="./data/cards.js"></script>
+    <!-- /script data-->
+    <!--  script project-->
+    <script src="js/main.min.js"></script>
+    <!-- /script project-->
+  </body>
+</html>
